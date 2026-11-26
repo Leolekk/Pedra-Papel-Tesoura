@@ -14,7 +14,7 @@ function Principal(){
     let jogadorSalvo = JSON.parse(localStorage.getItem('jogadores'));
 
     //verifica se há algum nome salvo
-    if(jogadorSalvo.nome != null){
+    if(jogadorsalvo != null){
         //torna visivel a div de opções
         opcao.style.display = "block";
         //desativa o formulário ate o usuário toma uma decisão
