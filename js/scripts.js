@@ -1,6 +1,6 @@
 window.onload = Principal;
 
-function Principal(){
+function Principal() {
     let form = document.getElementById("form-jogador");
     let nomeInput = document.getElementById("nome");
     let erro = document.getElementById("erro-nome");
@@ -9,12 +9,12 @@ function Principal(){
     let novo = document.getElementById("novo");
     let mensagem = document.getElementById("mensagem");
     let opcao = document.getElementById("opcoes")
-    
+
     //chama o localstorage para algum nome salvo
     let jogadorSalvo = JSON.parse(localStorage.getItem('jogadores'));
 
     //verifica se há algum nome salvo
-    if(jogadorsalvo != null){
+    if (jogadorSalvo != null) {
         //torna visivel a div de opções
         opcao.style.display = "block";
         //desativa o formulário ate o usuário toma uma decisão
@@ -23,11 +23,11 @@ function Principal(){
         mensagem.innerHTML = "Seja Bem Vindo novamente, " + jogadorSalvo.nome;
 
         //cria um evento em cima do clique do usuário redirecionando para página do jogo
-        continuar.addEventListener("click", function(){
+        continuar.addEventListener("click", function () {
             window.location.href = "jogo.html"
         })
         //cria um evento para criação de um usuário novo
-        novo.addEventListener("click", function(){
+        novo.addEventListener("click", function () {
             //desliga a visulização das opções desativando seu style
             opcao.style.display = "none"
             //ativa o style do formuário de identificação
@@ -35,14 +35,14 @@ function Principal(){
         })
     }
 
-    form.addEventListener("submit", function(event){
+    form.addEventListener("submit", function (event) {
         event.preventDefault();
-        
+
         //tirar espaços em branco da entrada
         let nome = nomeInput.value.trim();
 
         //verifica se o nome atende os requisitos
-        if(validarNome(nome) == false){
+        if (validarNome(nome) == false) {
             erro.innerHTML = "Use de 3 a 20 caracteres: letras, números e espaços.";
             return;
         }
@@ -67,7 +67,7 @@ function Principal(){
 }
 
 //função para validar o nome
-function validarNome(nome){
+function validarNome(nome) {
     //regex que permite qualquer letra de qualquer idioma incluindo acentos, números de 0 a 9, de 3 a 20 caracteres
     let regex = /^[\p{L}0-9 ]{3,20}$/u;
     return regex.test(nome);
